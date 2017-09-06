@@ -8917,7 +8917,8 @@ if (jQuery) {
     $(document.body).css('overflow', 'hidden');
     // Get the time
     var value = ((this.input.prop('value') || this.options['default'] || '') + '').split(':');
-    if (this.options.twelvehour && !(typeof value[1] === 'undefined')) {
+    /*ANAND
+	 if (this.options.twelvehour && !(typeof value[1] === 'undefined')) {
       if (value[1].indexOf("AM") > 0) {
         this.amOrPm = 'AM';
       } else {
@@ -8932,6 +8933,13 @@ if (jQuery) {
         this.amOrPm = value[0] >= 12 && value[0] < 24 ? 'PM' : 'AM';
       }
     }
+	 */
+	 if(value[0] >= 12){
+		 this.amOrPm = 'PM';
+	 }else{
+		 this.amOrPm = 'AM';		 
+	 }
+	 
     this.hours = +value[0] || 0;
     this.minutes = +value[1] || 0;
     this.spanHours.html(this.hours);
